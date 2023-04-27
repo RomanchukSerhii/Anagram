@@ -4,15 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30dp"
     tools:context=".MainActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_enter_text"
+        android:layout_width="0dp"
+        android:layout_height="98dp"
+        android:hint="@string/enter_text_for_anagram"
+        android:textColorHint="@color/gray"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/til_filter">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_enter_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_text_background"
+            android:textSize="14sp"
+            android:gravity="center_horizontal"
+            android:inputType="textMultiLine"
+            android:fontFamily="@font/poppins_medium"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_filter"
+        android:layout_width="0dp"
+        android:layout_height="98dp"
+        android:hint="@string/enter_symbols_to_ignore"
+        android:textColorHint="@color/gray"
+        android:layout_marginTop="14dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_enter_text"
+        app:layout_constraintBottom_toTopOf="@id/tv_anagram">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_filter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="14sp"
+            android:background="@drawable/edit_text_background"
+            android:gravity="center_horizontal"
+            android:inputType="textMultiLine"
+            android:fontFamily="@font/poppins_medium"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
+        android:id="@+id/tv_anagram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/here_must_be_your_anagram"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:layout_marginTop="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_filter"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
