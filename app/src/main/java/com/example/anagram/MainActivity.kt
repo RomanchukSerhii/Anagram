@@ -55,24 +55,36 @@ class MainActivity : AppCompatActivity() {
 
     private fun setEditTextListeners() {
         with(binding) {
+            etEnterText.setOnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    setStartAlignment(etEnterText)
+                } else {
+                    setCenterAlignment(etEnterText)
+                }
+            }
+
+            etFilter.setOnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    setStartAlignment(etFilter)
+                } else {
+                    setCenterAlignment(etFilter)
+                }
+            }
+
             etEnterText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,
                     count: Int,
                     after: Int
-                ) {
-
-                }
+                ) { }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    setTextParams(etEnterText)
+//                    setTextParams(etEnterText)
                     getAnagram()
                 }
 
-                override fun afterTextChanged(s: Editable?) {
-
-                }
+                override fun afterTextChanged(s: Editable?) { }
             })
 
             etFilter.addTextChangedListener(object : TextWatcher {
@@ -92,16 +104,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setTextParams(editText: TextInputEditText) {
-        if (editText.text.toString().isNotBlank()) {
-            editText.gravity = Gravity.START
-            editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
-            editText.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
-        } else {
-            editText.gravity = Gravity.CENTER
-            editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
-            editText.textAlignment = View.TEXT_ALIGNMENT_CENTER
-        }
+//    private fun setTextParams(editText: TextInputEditText) {
+//        if (editText.text.toString().isNotBlank()) {
+//            editText.gravity = Gravity.START
+//            editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+//            editText.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+//        } else {
+//            editText.gravity = Gravity.CENTER
+//            editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
+//            editText.textAlignment = View.TEXT_ALIGNMENT_CENTER
+//        }
+//    }
+
+    private fun setStartAlignment(editText: TextInputEditText) {
+        editText.gravity = Gravity.START
+        editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+        editText.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+    }
+
+    private fun setCenterAlignment(editText: TextInputEditText) {
+        editText.gravity = Gravity.CENTER
+        editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
+        editText.textAlignment = View.TEXT_ALIGNMENT_CENTER
     }
 
     private fun getAnagram() {
